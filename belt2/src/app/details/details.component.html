@@ -1,0 +1,19 @@
+<h2>Product Details</h2> 
+<table>
+  <tr>
+    <td><b>Name:</b></td>
+    <td>{{product.name}}</td>
+  </tr>
+  <tr>
+      <td><b>Qty:</b></td>
+      <td>{{product.quantity}}</td>
+  </tr>
+  <tr>
+      <td><b>Price:</b></td>
+      <td>{{product.price}}</td>
+  </tr>
+</table>
+<br><br><br>
+<button [routerLink]="['/']">BACK</button>
+<button [disabled]= "product.quantity > 0" (click)="removeProduct(product.productId)">DELETE</button>
+

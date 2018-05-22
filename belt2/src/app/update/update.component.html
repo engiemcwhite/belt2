@@ -1,0 +1,34 @@
+<h2>Update Product</h2>
+<div *ngFor="let error of errors">
+    {{error}}
+    <br>
+  </div>
+<div class="wrapper">
+    <form name="updateform" (submit)="changeProduct()">
+      <!-- use the json pipe to see how newTask changes in real time -->
+       <!-- <p> {{ product | json }} </p> -->
+       {{name.errors | json}} <br>
+       {{quantity.errors | json}} <br>
+       {{price.errors | json}} <br>
+       <table>
+           <tr>
+             <td>Name:</td>
+             <td><input type="text" name="name" required minlength="3" [(ngModel)]="product.name" #name="ngModel"/></td>
+           </tr>
+           <tr>
+             <td>Quantity:</td>
+             <td><input type="number" name="quantity" required min="0" [(ngModel)]="product.quantity" #quantity="ngModel" /></td>
+           </tr>
+           <tr>
+             <td>Price:</td>
+             <td>$<input type="number" name="price" required min="0" [(ngModel)]="product.price" #price="ngModel"  /></td>
+           </tr>
+         </table>
+        <button type="submit" [disabled]="!(name.valid && product.quantity>=0 && product.price >= 0)">UPDATE</button>
+      <!-- <input type="submit" value="UPDATE" /> -->
+      <!-- <button [routerLink]="['/products/',id]">Cancel</button> -->
+  </form>
+  <button (click)="findProduct()">RESET</button>
+  <!-- <button  (click)="Reset()">RESET</button> -->
+
+</div>

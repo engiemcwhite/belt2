@@ -1,0 +1,31 @@
+<h2>New Product</h2>
+<div *ngFor="let error of errors">
+  {{error}}
+  <br>
+</div>
+<div>
+    <form name="myform" (submit)="makeProduct()">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <!-- <p> {{ pet | json }} </p> -->
+      {{name.errors | json}} <br>
+      {{quantity.errors | json}} <br>
+      {{price.errors | json}} <br>
+      <table>
+          <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" required minlength="3" [(ngModel)]="product.name" #name="ngModel"/></td>
+          </tr>
+          <tr>
+            <td>Quantity:</td>
+            <td><input type="number" name="quantity" required min="0" [(ngModel)]="product.quantity" #quantity="ngModel" /></td>
+          </tr>
+          <tr>
+            <td>Price:</td>
+            <td>$<input type="number" name="price" required min="0" [(ngModel)]="product.price" #price="ngModel"  /></td>
+          </tr>
+        </table>
+      <button type="submit" [disabled]="!(name.valid && quantity.valid && price.valid)">CREATE</button>
+      <!-- <input ng-disabled="!name.valid || !quantity.valid || !price.valid" type="submit" value="CREATE" /> -->
+      <button [routerLink]="['/']">CANCEL</button>
+  </form>
+</div>
